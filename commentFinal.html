@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="secondPage.css" />
+</head>
+
+<body>
+    <div class="header">
+        <i class="fa fa-reddit-alien" style="font-size:48px;color:red"></i>
+        <p class="logo">Reddit.</p>
+    </div>
+    <div class="input-data" id="input-data"></div>
+
+    <div class="comment-form" id="comment-form">
+        <label for="comment">Comment : </label>
+        <input type="text" id="comment" placeholder="Enter comment here" />
+        <button class="comment-submit" onclick="submitComment();">Submit</button>
+    </div>
+
+    <button id="comment-toggle" class="comment-toggle" onclick="toggleComment();">
+      Comment
+    </button>
+    <div class="input-comment" id="input-comment"></div>
+</body>
+<script>
+    function toggleComment() {
+        var commentForm = document.getElementById("comment-form");
+        var toggleButton = document.getElementById("comment-toggle");
+        commentForm.style.display = "block";
+        toggleButton.style.display = "none";
+    }
+    var queryString = decodeURIComponent(window.location.search);
+    queryString = queryString.substring(1);
+    var queries = queryString.split("=");
+    console.log(queries[1]);
+    var id = queries[1];
+    console.log(localStorage.getItem(id));
+    var postData = JSON.parse(localStorage.getItem(id));
+    console.log(typeof postData);
+    console.log(postData.titleData);
+    var inputContainer = document.getElementById("input-data");
+
+    var titleDiv = document.createElement("div");
+    titleDiv.className = "title-div";
+    inputContainer.appendChild(titleDiv);
+
+    var titlePara = document.createElement("p");
+    titlePara.innerHTML = postData.titleData + "-";
+    titlePara.className = "title-para";
+    titleDiv.appendChild(titlePara);
+
+    var authorPara = document.createElement("p");
+    authorPara.className = "author-para";
+    authorPara.innerHTML = postData.authorData;
+    titleDiv.appendChild(authorPara);
+
+    var headerBreak = document.createElement("hr");
+    inputContainer.appendChild(headerBreak);
+
+    var imgData = document.createElement("img");
+    imgData.className = "image-data";
+    imgData.src = postData.imgURLData;
+    imgData.alt = "no image to show";
+    inputContainer.appendChild(imgData);
+
+    var headerBreak1 = document.createElement("hr");
+    inputContainer.appendChild(headerBreak1);
+
+    var contentPara = document.createElement("p");
+    contentPara.className = "content-para";
+    contentPara.innerHTML = postData.contentData;
+    inputContainer.appendChild(contentPara);
+
+    var commentArray = new Array();
+    var commentObj = {};
+    var i = 0,
+        j = 0;
+
+    var replyArray = new Array();
+    var container = document.getElementById("input-comment");
+
+    function submitComment() {
+        var dataObj = {};
+        var comment = document.getElementById("comment").value;
+
+        var commentPara = document.createElement("p");
+        commentPara.className = "comment-para";
+        commentPara.innerHTML = comment;
+        commentPara.id =
+            Math.random()
+            .toString(36)
+            .substring(2, 15) +
+            Math.random()
+            .toString(36)
+            .substring(2, 15);
+        container.appendChild(commentPara);
+        dataObj.id = commentPara.id;
+
+        dataObj.comment = comment;
+        dataObj.parentId = "";
+        commentArray.push(dataObj);
+        console.log(commentArray);
+
+        var replyButton = document.createElement("button");
+        replyButton.className = "reply-button";
+        replyButton.id = dataObj.id;
+        replyButton.innerHTML = "Reply";
+        commentPara.appendChild(replyButton);
+
+        replyButton.addEventListener("click", function() {
+            console.log(this.id);
+            var replyToComment = prompt("Enter your reply");
+            var replyObj = {};
+            replyObj.id =
+                Math.random()
+                .toString(36)
+                .substring(2, 15) +
+                Math.random()
+                .toString(36)
+                .substring(2, 15);
+            replyObj.comment = replyToComment;
+            replyObj.parentId = this.id;
+
+            commentArray.push(replyObj);
+            replyArray.push(replyObj);
+            console.log(commentArray);
+            console.log(replyArray);
+
+            commentReply(replyObj);
+
+            // var replyComment = document.createElement("p");
+            // replyComment.className = "comment-reply";
+            // replyComment.innerHTML = replyToComment;
+            // container.appendChild(replyComment);
+
+            // var replyButton = document.createElement("button");
+            // replyButton.className = "reply-button";
+            // replyButton.id = replyObj.id;
+            // replyButton.innerHTML = "Reply";
+            // replyComment.appendChild(replyButton);
+
+            // console.log(commentArray);
+            // console.log(replyArray);
+        });
+    }
+
+    function commentReply(replyObj) {
+        console.log(replyObj);
+
+        var parentContainer = document.getElementById(replyObj.parentId);
+        var currHeight = parentContainer.style.height;
+        console.log(currHeight);
+        // parentContainer.style.height = currHeight + 50 px;
+        console.log(parentContainer);
+        var replyComment = document.createElement("p");
+        replyComment.className = "comment-reply";
+        replyComment.id = replyObj.id;
+        replyComment.innerHTML = "-->" + replyObj.comment;
+        parentContainer.appendChild(replyComment);
+
+        var replyButton = document.createElement("button");
+        replyButton.className = "reply-button";
+        replyButton.id = replyObj.id;
+        replyButton.innerHTML = "Reply";
+        replyComment.appendChild(replyButton);
+
+        // var replyComment = document.createElement("p");
+        // replyComment.className = "comment-reply";
+        // replyComment.innerHTML = replyObj.comment;
+        // container.appendChild(replyComment);
+
+        // var replyButton = document.createElement("button");
+        // replyButton.className = "reply-button";
+        // replyButton.id = replyObj.id;
+        // replyButton.innerHTML = "Reply";
+        // replyComment.appendChild(replyButton);
+
+        console.log(commentArray);
+        console.log(replyArray);
+
+        replyButton.addEventListener("click", function() {
+            console.log(this.id);
+            var replyToCmt = prompt("Enter your reply");
+            var replyObject = {};
+            replyObject.id =
+                Math.random()
+                .toString(36)
+                .substring(2, 15) +
+                Math.random()
+                .toString(36)
+                .substring(2, 15);
+            replyObject.comment = replyToCmt;
+            replyObject.parentId = this.id;
+
+            commentArray.push(replyObject);
+            replyArray.push(replyObject);
+            console.log(commentArray);
+            console.log(replyArray);
+
+            commentReply(replyObject);
+        });
+    }
+
+    // replyButton.addEventListener("click", function replyComment() {
+    //   var currReply = {};
+    //   console.log("reply button clicked");
+    //   console.log(this.id);
+    //   currReply.parentId = this.id;
+    //   currReply.id = k++;
+    //   var cmtReply = prompt("enter the reply");
+    //   currReply.comment = cmtReply;
+    //   console.log(commentArray[this.id]);
+    //   var replyVal = String(replyArray.length);
+    //   // replyArray[this.id].reply = currReply;
+    //   replyArray.push(currReply);
+    //   commentArray[this.id][replyVal] = currReply;
+    //   console.log(commentArray);
+    //   console.log(replyArray);
+    // });
+</script>
+
+</html>

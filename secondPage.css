@@ -1,0 +1,148 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.fa-reddit-alien {
+    display: inline-block;
+}
+
+body {
+    padding: 10px;
+    background-color: black;
+}
+
+.logo {
+    color: red;
+    padding: 10px;
+    display: inline-block;
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.title-div {
+    text-align: center;
+}
+
+.title-para {
+    color: white;
+    font-weight: bold;
+    font-size: 35px;
+    display: inline-block;
+}
+
+.author-para {
+    color: white;
+    font-weight: normal;
+    font-size: 30px;
+    display: inline-block;
+    letter-spacing: 2px;
+}
+
+hr {
+    color: red;
+    text-align: center;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.image-data {
+    width: 500px;
+    height: 500px;
+    display: block;
+    margin: 40px auto;
+}
+
+.content-para {
+    margin: 20px auto;
+    color: white;
+    text-align: center;
+}
+
+label[for="comment"] {
+    color: red;
+    font-size: 20px;
+    padding: 10px;
+    line-height: 5px;
+}
+
+input[id="comment"] {
+    color: white;
+    background-color: transparent;
+    outline: none;
+    outline-style: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    width: 75%;
+    border-bottom: solid red 2px;
+}
+
+.comment-form {
+    display: none;
+}
+
+.comment-submit {
+    color: black;
+    background-color: red;
+    width: 100px;
+    height: 40px;
+    display: block;
+    margin: 10px auto;
+    outline: none;
+    border: black;
+}
+
+.comment-toggle {
+    color: black;
+    background-color: red;
+    width: 100px;
+    height: 40px;
+    display: block;
+    margin: 30px auto;
+    outline: none;
+    border: black;
+}
+
+.comment-para {
+    color: white;
+    font-size: 20px;
+    display: block;
+    /* height: 30px; */
+    line-height: 5px;
+    /* border-top: 1px solid red; */
+    /* margin: 20px auto; */
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.reply-button {
+    width: 70px;
+    /* height: 30px; */
+    height: 25px;
+    color: black;
+    background-color: red;
+    border-radius: 5px 5px;
+    outline: none;
+    border: black;
+    float: right;
+}
+
+.reply-button::after {
+    content: "";
+    clear: both;
+}
+
+.comment-reply {
+    color: red;
+    font-size: 20px;
+    display: block;
+    /* height: 50px; */
+    line-height: 10px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 40px;
+    position: relative;
+}

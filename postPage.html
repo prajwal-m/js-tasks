@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="post.css" />
+</head>
+
+<body>
+    <div class="header" id="header">
+        <nav class="navbar" id="bar">
+            <ul>
+                <li class="active">
+                    <a href="#"><i class="fa fa-reddit" style="font-size:30px;color:red"></i
+              >reddit.</a
+            >
+          </li>
+          <li>
+            <div class="dropdown">
+              <button class="dropbtn">
+                Categories
+                <i class="fa fa-caret-down"></i>
+              </button>
+              <div class="dropdown-content">
+                <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+    </div>
+    </div>
+    </li>
+    <li><input type="text" name="search" placeholder="Search.." /></li>
+    <li><a href="#">Contact</a></li>
+    </ul>
+    <!-- <a class="search" href="#"><i class="fa fa-fw fa-search"></i> </a> -->
+    </nav>
+    </div>
+    <div class="input-data" id="input-data"></div>
+
+    <div class="container-cmt" id="container-cmt">
+        <button id="comment-toggle" class="comment-toggle" onclick="toggleComment();">
+        Comment
+      </button>
+        <div class="comment-form" id="comment-form">
+            <label for="comment">Comment : </label>
+            <input type="text" id="comment" placeholder="Enter comment here" />
+            <button class="comment-submit" onclick="submitComment();">
+          Submit
+        </button>
+        </div>
+
+        <div class="comment-thread" id="comment-thread"></div>
+    </div>
+    <script src="newHandle.js"></script>
+</body>
+
+</html>

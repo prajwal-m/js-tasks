@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="page.css" />
+</head>
+
+<body>
+    <div class="header" id="header">
+        <nav class="navbar" id="bar">
+            <ul>
+                <li class="active">
+                    <a href="#"><i class="fa fa-reddit" style="font-size:30px;color:red"></i
+              >reddit.</a
+            >
+          </li>
+          <li>
+            <div class="dropdown">
+              <button class="dropbtn">
+                Categories
+                <i class="fa fa-caret-down"></i>
+              </button>
+              <div class="dropdown-content">
+                <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+    </div>
+    </div>
+    </li>
+    <li><input type="text" name="search" placeholder="Search.." /></li>
+
+    <li>
+        <select class="nav-select">
+          <option value="trending">Trending</option>
+          <option value="all">All</option>
+        </select>
+    </li>
+    <li><a href="#">Contact</a></li>
+    </ul>
+    <!-- <a class="search" href="#"><i class="fa fa-fw fa-search"></i> </a> -->
+    </nav>
+    </div>
+
+    <div class="input-container" id="input-container"></div>
+
+    <button class="open-button" onclick="openForm()">
+      <i class="fa fa-plus"></i>
+    </button>
+
+    <div class="form-popup" id="myForm">
+        <div class="form-container">
+            <p>Add Post</p>
+
+            <label for="form-title"><b>Title</b></label>
+            <input id="form-title" type="text" placeholder="Enter Title" name="title" required />
+
+            <label for="form-author"><b>Author</b></label>
+            <input type="text" id="form-author" placeholder="Enter Author" name="author" required />
+            <label for="form-content"><b>Content</b></label>
+            <input type="text" id="form-content" placeholder="Enter content" name="content" required />
+
+            <label for="form-image"><b>image URL</b></label>
+            <input type="text" id="form-image" placeholder="Enter Image URL" name="image" />
+
+            <button class="btn" onclick="handleSubmit();">
+          Submit
+        </button>
+            <button type="button" class="btn cancel" onclick="closeForm()">
+          Close
+        </button>
+        </div>
+    </div>
+    <script src="handleReddit.js"></script>
+</body>
+
+</html>
