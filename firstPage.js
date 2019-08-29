@@ -58,13 +58,13 @@ function createDomElements(dataObject) {
   imgElement.className = "image-element";
   //   newDiv.appendChild(imgElement)
 
-  //   var str = dataObject.imgURLData;
-  //   console.log("regex test");
-  //   console.log(str);
-  //   var regex = RegExp("(https?://.*.(?:png|jpg))");
-  //   var globalRegex = RegExp("(https?://.*.(?:png|jpg))", "g");
+  var str = dataObject.imgURLData;
+  console.log("regex test");
+  console.log(str);
+  var regex = RegExp("(https?://.*.(?:png|jpg))");
+  var globalRegex = RegExp("(https?://.*.(?:png|jpg))", "g");
 
-  //   console.log(regex.test(str));
+  console.log(regex.test(str));
 
   dataObject.imgURLData != ""
     ? (newDiv.appendChild(imgElement), (newDiv.style.marginLeft = "150px"))
@@ -162,3 +162,12 @@ var staticData = {
 };
 
 createDomElements(staticData);
+
+function changeView() {
+  var viewDiv = document.querySelectorAll(".childDiv");
+  console.log(viewDiv);
+  for (var i = 0; i < viewDiv.length; i++) {
+    viewDiv[i].style.width = "45%";
+    viewDiv[i].margin = "20px 10px";
+  }
+}
