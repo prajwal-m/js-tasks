@@ -1,0 +1,13 @@
+Since there are 2 pages, to share data between them use localstorage or session storage
+
+const posts = [{
+    id: "dsdfsdf",
+    title: "dfsdfsd",
+    author: "dsfsdfds",
+    voteCount: 0
+    comments: []
+}];
+
+// OR //
+
+const comments = []

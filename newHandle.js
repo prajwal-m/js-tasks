@@ -80,12 +80,10 @@ function toggleComment() {
   toggleButton.style.display = "none";
 }
 
-var commentArray = new Array();
+var commentArray = [];
 
-var replyArray = new Array();
+var replyArray = [];
 var container = document.getElementById("comment-thread");
-
-function createCommentDom() {}
 
 function submitComment() {
   var dataObj = {};
@@ -187,7 +185,7 @@ function commentReply(replyObj) {
   });
 }
 
-var newCommentArray = new Array();
+var newCommentArray = [];
 
 // var newObj = JSON.parse(localStorage.getItem(postId));
 // console.log(newObj);
@@ -244,7 +242,7 @@ downvoteIcon.addEventListener("click", function(e) {
 
 var commentData = {
   id: "g6723yzv0mce9r7sghl298",
-  comment: "asdasdas",
+  comment: "qwertyuiop",
   parentId: ""
 };
 

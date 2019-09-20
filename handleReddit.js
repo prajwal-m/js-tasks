@@ -1,12 +1,12 @@
 function openForm() {
-  document.getElementById("myForm").style.display = "block";
+  document.getElementById("form-popup").style.display = "block";
 }
 
 function closeForm() {
-  document.getElementById("myForm").style.display = "none";
+  document.getElementById("form-popup").style.display = "none";
 }
 
-var dataArray = new Array();
+var dataArray = [];
 
 function moveLocation(id, voteElement) {
   console.log("moved");
@@ -22,6 +22,7 @@ function moveLocation(id, voteElement) {
 }
 
 function createDomElements(dataObject) {
+  // Create the div with details and append it in the container
   var container = document.getElementById("input-container");
   console.log("inside create dom method");
   console.log(container);
@@ -111,6 +112,7 @@ function createDomElements(dataObject) {
 
   var count = 0;
   upvoteIcon.addEventListener("click", function(e) {
+    // Persist the vote data in localstorage
     e.preventDefault();
     e.stopPropagation();
     var incrCount = document.getElementById(voteCount.id);
@@ -118,6 +120,7 @@ function createDomElements(dataObject) {
   });
 
   downvoteIcon.addEventListener("click", function(e) {
+    // Persist the vote data in localstorage
     e.preventDefault();
     e.stopPropagation();
     var decrCount = document.getElementById(voteCount.id);
@@ -128,6 +131,7 @@ function createDomElements(dataObject) {
 // handling form submit
 
 function handleSubmit() {
+  // Get all data and validate them
   var title = document.getElementById("form-title").value;
   var author = document.getElementById("form-author").value;
   var content = document.getElementById("form-content").value;
@@ -140,6 +144,7 @@ function handleSubmit() {
     imgURLData: imgURL
   };
 
+  // Persist in localstorage
   dataArray.push(dataObject);
   console.log(dataArray);
 
@@ -152,6 +157,7 @@ function handleSubmit() {
   createDomElements(dataObject);
 }
 
+//Move all data to localstorage
 var staticData = {
   titleData: "Animals",
   authorData: "Martin Garrix",
@@ -161,4 +167,5 @@ var staticData = {
     "https://yt3.ggpht.com/a/AGF-l78q93xLts3A_ZL0ZetQ4JpMdeOxq624ENl3tg=s900-c-k-c0xffffffff-no-rj-mo"
 };
 
+// Render the posts from localstorage
 createDomElements(staticData);
